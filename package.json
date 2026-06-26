@@ -1,0 +1,30 @@
+{
+  "name": "gearyco-agentic-web-design",
+  "version": "0.1.0",
+  "description": "Agent documentation for Gearyco WordPress web projects — install AGENTS.md and reference docs into any project",
+  "type": "module",
+  "bin": {
+    "gearyco-agentic-web-design": "./bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "AGENTS.md",
+    "agent-docs"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "agents",
+    "ai",
+    "wordpress",
+    "automatic-css",
+    "etch",
+    "gearyco"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevingeary/gearyco-agentic-web-design.git"
+  }
+}

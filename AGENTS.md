@@ -17,11 +17,21 @@ Gearyco Agentic Web Design is the standard operating system for building WordPre
 7. Performance Optimization
 8. Deployment
 
+## Getting started: Discovery
+
+Every project begins with a guided discovery interview. When the user says `start discovery`, `/discovery`, "begin discovery", or asks to kick off a new project, load and follow [agent-docs/discovery.md](agent-docs/discovery.md) and run the interview to completion.
+
+Do not skip ahead to copywriting, wireframing, or design until the discovery brief at `discovery/brief.md` is complete and the user has approved it. If a brief already exists, resume it rather than starting over.
+
 ## Project Environment & Stack
 
 - WordPress
 - Etch (https://docs.etchwp.com)
 - Automatic.css (https://docs.automaticcss.com)
+
+## Discovery Conventions
+
+Load and follow [agent-docs/discovery.md](agent-docs/discovery.md) during workflow step 1 (Discovery) to run the guided interview and produce the project brief that drives every later step.
 
 ## Copy Conventions
 
