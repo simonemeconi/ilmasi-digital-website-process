@@ -67,7 +67,20 @@ Test the CLI locally before publishing:
 node bin/cli.js /tmp/test-project
 ```
 
-Publish to npm:
+### Releasing
+
+Publishing to npm is automated. A GitHub Actions workflow (`.github/workflows/publish.yml`) runs on every push to `main` and publishes only when the version in `package.json` is new. To cut a release:
+
+```bash
+npm version patch   # bumps version + creates a git tag (use minor/major as needed)
+git push --follow-tags
+```
+
+The workflow checks npm, sees the new version, and publishes it. Pushes without a version bump are ignored (no error).
+
+**One-time setup:** add an npm automation token as a repo secret named `NPM_TOKEN` (npm → Access Tokens → Generate → Automation; then GitHub repo → Settings → Secrets and variables → Actions → New repository secret).
+
+To publish manually instead:
 
 ```bash
 npm publish
