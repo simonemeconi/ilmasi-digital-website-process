@@ -133,14 +133,21 @@ function main() {
   copyPackageFiles(target, force);
 
   const discoveryDir = join(target, "discovery");
-  const createdDiscovery = !existsSync(discoveryDir);
   mkdirSync(discoveryDir, { recursive: true });
+
+  // brief.md holds the user's discovery answers, so it is never overwritten,
+  // even with --force. --force only refreshes the shipped docs.
+  const briefDest = join(discoveryDir, "brief.md");
+  const briefExisted = existsSync(briefDest);
+  if (!briefExisted) {
+    cpSync(join(packageRoot, "templates", "discovery-brief.md"), briefDest);
+  }
 
   const docCount = countAgentDocs();
   console.log(`Installed Gearyco Agentic Web Design to ${target}`);
   console.log(`  AGENTS.md`);
   console.log(`  agent-docs/ (${docCount} reference docs)`);
-  console.log(`  discovery/ ${createdDiscovery ? "(created)" : "(exists)"}`);
+  console.log(`  discovery/brief.md ${briefExisted ? "(kept)" : "(created)"}`);
   console.log("\nYour AI coding tool will pick up AGENTS.md automatically.");
   console.log("Next step: open your AI coding tool and say  start discovery");
 }

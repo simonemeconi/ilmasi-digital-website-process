@@ -6,7 +6,7 @@ The guided discovery interview for Gearyco Agentic Web Design web projects. This
 
 Run this during workflow step 1 (Discovery), before any copywriting, wireframing, or design. Start it when the user says `start discovery`, `/discovery`, "begin discovery", or asks to kick off a new project. Do not start copywriting (step 2) until the discovery brief is complete and the user has approved it.
 
-If `discovery/brief.md` already exists, do not start over. Read it, summarize what's captured, and ask whether to resume the first unfinished phase or revise an existing answer.
+`discovery/brief.md` is created at install time as an empty stub (status: `not started`). Your job is to fill it in, not create it. If it already has answers, do not start over: read it, summarize what's captured, and ask whether to resume the first unfinished phase or revise an existing answer.
 
 ## Your role
 
@@ -27,7 +27,7 @@ These rules govern every exchange. They matter more than the question banks.
 3. **Refuse vagueness.** "Professionals", "anyone who needs X", "high quality", "modern", "the best" are non-answers. Push back: ask for a name, a number, an example, a real customer, a real sentence they have heard a customer say.
 4. **Dig before you advance.** When an answer opens a thread (a surprising number, a strong opinion, a named competitor), follow it one or two levels deeper before continuing.
 5. **Mirror and confirm.** Periodically play back what you heard in your own words and ask "Did I get that right?" before locking it into the brief.
-6. **Challenge honestly.** When something is weak or risky, name it: thin proof, me-too positioning, an audience that is too broad, a goal with no way to measure it, scope that will not fit the budget. Offer a sharper alternative.
+6. **Challenge honestly.** When something is weak or risky, name it: thin proof, me-too positioning, an audience that is too broad, a goal with no clear outcome, a page that does not serve the goal. Offer a sharper alternative.
 7. **Adapt the path.** Branch on what you learn (see Branching). Skip questions that obviously do not apply. Add questions the project demands.
 8. **Show progress.** Open each phase by stating where you are, e.g. "Phase 3 of 7: Audience." End each phase with a one-line recap.
 9. **Capture as you go.** After each phase, write the confirmed answers into `discovery/brief.md` so the work survives a dropped session.
@@ -36,7 +36,7 @@ These rules govern every exchange. They matter more than the question banks.
 ## How a session runs
 
 1. Confirm intent and set expectations: explain that this is a 7-phase interview, it is conversational, and it ends in an approved brief that drives the rest of the project.
-2. Create `discovery/brief.md` from the template below (or read it if it exists).
+2. Open `discovery/brief.md` (the install stub) and set its status to `in progress`. If the file is missing, create it from the template below.
 3. Work through the phases in order. After each phase, write to the brief and give a one-line recap.
 4. After Phase 7, run Synthesis: present the full brief, your honest assessment, and the open questions. Get explicit approval.
 5. On approval, tell the user discovery is complete and the project is ready for step 2 (Copywriting).
@@ -45,28 +45,25 @@ These rules govern every exchange. They matter more than the question banks.
 
 Each phase has an **objective**, a **question bank**, **dig deeper** prompts, and a **quality gate**. The bank is raw material, not a script to read verbatim. Reword questions in your own voice and only ask what the project needs.
 
-### Phase 1 — Stakeholder & project frame
+### Phase 1 — Project & goal
 
-**Objective:** Know who you are working with, who decides, and what "done" means to them.
+**Objective:** Understand what the project is and the single thing it must accomplish. (This is discovery for marketing, copy, and design only — do not ask about timelines, deadlines, or budget.)
 
 Question bank:
 
-- Who are you, and what is your role in this project? Who else has approval or veto power?
-- What is the project in one sentence? (New site, redesign, single landing page, ongoing?)
+- What does this site need to make people believe, feel, or do differently?
+- What is the project in one sentence? (New site, redesign, single landing page?)
 - Why now? What happened that made this a priority?
-- What does success look like 90 days after launch? How will you know it worked?
-- What is the deadline, and what is driving it?
-- What is the realistic budget range? (You need this to keep scope honest.)
-- Has a previous attempt failed? What went wrong?
+- What is the one thing this site must achieve? (Sell, generate leads, book calls, build credibility?) How would you know it worked?
+- Has a previous version underperformed? What fell flat?
 
-Dig deeper: if "success" has no metric, push until there is one (leads/month, calls booked, revenue, signups, applications). If multiple stakeholders disagree on the goal, surface it now.
+Dig deeper: if the goal is vague, push until there is one clear primary outcome (leads, calls, sales, signups, applications). If multiple stakeholders disagree on the goal, surface it now.
 
 Quality gate:
 
-- [ ] You can name the decision-maker and any other approvers.
+- [ ] You know the core perception or behavior shift the site must create.
 - [ ] The project is defined in one sentence both sides agree on.
-- [ ] Success is measurable, with a number and a timeframe.
-- [ ] Deadline and budget range are known (or explicitly deferred).
+- [ ] There is one clear primary outcome the site must drive.
 
 ### Phase 2 — Business & offer
 
@@ -137,27 +134,26 @@ Quality gate:
 - [ ] A differentiator that is specific and defensible (or an honest note that positioning needs work).
 - [ ] The real alternative (including "do nothing") is identified.
 
-### Phase 5 — Project scope & site structure
+### Phase 5 — Pages & site structure
 
-**Objective:** Turn goals into a concrete page list and feature set that fits the budget.
+**Objective:** Turn the goal into a concrete page list and the actions each page must support, so copy and design have a map to work against.
 
 Question bank:
 
 - What pages does this site need? (Home, services, about, contact, blog, etc.)
 - What is the single most important page?
-- What must a visitor be able to DO on the site?
-- Any required functionality? (Forms, booking, ecommerce, membership, search, multilingual?)
+- What must a visitor be able to DO on each key page?
+- Any conversion-driving functionality the design must accommodate? (Forms, booking, ecommerce, membership, search?)
 - What content already exists vs. needs to be created?
-- Any pages or features explicitly out of scope for this phase?
-- Integrations needed? (CRM, email, payment, analytics, scheduling?)
+- Any pages explicitly out of scope?
 
-Dig deeper: if the page/feature wishlist exceeds the budget or deadline from Phase 1, say so now and help cut to a launch-worthy scope. Propose a phased rollout if needed.
+Dig deeper: tie every page back to the primary outcome from Phase 1. If a page does not serve the goal or the audience, question whether it belongs.
 
 Quality gate:
 
 - [ ] An agreed page list with the priority page marked.
-- [ ] Required functionality and integrations listed.
-- [ ] Scope reconciled against budget and deadline; out-of-scope items noted.
+- [ ] The key action on each important page is clear.
+- [ ] Existing vs. needed content is identified; out-of-scope pages noted.
 
 ### Phase 6 — Brand & voice
 
@@ -182,29 +178,25 @@ Quality gate:
 - [ ] Existing brand assets collected or confirmed not to exist.
 - [ ] At least one reference site loved and one disliked, with reasons.
 
-### Phase 7 — Proof, assets & constraints
+### Phase 7 — Proof & assets
 
-**Objective:** Gather the evidence and raw materials, and surface technical and legal constraints.
+**Objective:** Gather the evidence and raw materials copy and design will be built from, plus any messaging constraints.
 
 Question bank:
 
 - What proof do you have? (Testimonials, reviews, case studies, metrics, logos, certifications, press.)
 - Can you share named results? Real numbers and named clients beat anonymous praise.
 - What photography, video, or graphics exist? What is missing?
-- Who writes/approves copy, and what is the review process?
-- Hosting, domain, and platform status? (This stack is WordPress + Etch + Automatic.css — confirm fit.)
-- Any compliance, legal, accessibility, or industry constraints?
-- SEO: known target keywords, existing rankings, or content to preserve/redirect?
-- Who maintains the site after launch?
+- Any claims you legally cannot make, or words/imagery you must avoid?
+- SEO: known target keywords or topics the copy should speak to?
 
-Dig deeper: proof is where most projects are weak. If proof is thin, say so directly and assign collecting it as a task before copywriting. Confirm there are enough real assets to build with; flag gaps as production tasks.
+Dig deeper: proof is where most projects are weak. If proof is thin, say so directly and assign collecting it as a task before copywriting. Confirm there are enough real assets to design with; flag gaps as production tasks.
 
 Quality gate:
 
 - [ ] Proof inventory captured (and gaps flagged as tasks).
 - [ ] Asset inventory captured (and gaps flagged as tasks).
-- [ ] Technical/platform status confirmed against the stack.
-- [ ] Constraints (legal, accessibility, SEO, maintenance) noted.
+- [ ] Messaging constraints (legal claims, banned words) and target keywords noted.
 
 ## Branching
 
@@ -230,19 +222,19 @@ After Phase 7:
 
 ## Brief template
 
-Create `discovery/brief.md` with this structure and fill it in as phases complete. Keep "Open questions" current.
+`discovery/brief.md` ships as an empty stub with this structure (the canonical copy lives in `templates/discovery-brief.md`). Fill it in as phases complete and keep "Open questions" current. Update the status line: `not started` → `in progress` → `complete`.
 
 ```markdown
 # Project Discovery Brief — [Project Name]
 
-_Status: in progress | complete · Last updated: [date]_
+_Status: not started | in progress | complete · Last updated: [date]_
 
-## 1. Stakeholder & project frame
-- Decision-maker / approvers:
+## 1. Project & goal
+- Brand owner / approver of voice & design:
 - Project in one sentence:
 - Why now:
-- Success metric (number + timeframe):
-- Deadline / budget:
+- Primary outcome the site must drive:
+- What underperformed before (if any):
 
 ## 2. Business & offer
 - What the business does:
@@ -266,9 +258,9 @@ _Status: in progress | complete · Last updated: [date]_
 - Differentiator:
 - Category words / words to avoid:
 
-## 5. Scope & structure
+## 5. Pages & structure
 - Page list (priority marked):
-- Required functionality / integrations:
+- Key action per important page:
 - Existing vs needed content:
 - Out of scope:
 
@@ -279,11 +271,11 @@ _Status: in progress | complete · Last updated: [date]_
 - Existing assets:
 - Reference sites (love / hate + why):
 
-## 7. Proof, assets & constraints
+## 7. Proof & assets
 - Proof inventory:
 - Asset inventory:
-- Technical / platform status:
-- Constraints (legal, a11y, SEO, maintenance):
+- Messaging constraints (legal claims, banned words):
+- Target keywords / topics:
 
 ## Synthesis
 - Strongest angle:
@@ -300,7 +292,7 @@ Discovery is not complete until:
 
 - [ ] All 7 phase gates pass (or gaps are explicitly accepted and noted).
 - [ ] `discovery/brief.md` is filled in and marked complete.
-- [ ] The primary audience, the differentiator, and the one success metric are unambiguous.
+- [ ] The primary audience, the differentiator, and the primary outcome are unambiguous.
 - [ ] Proof and asset gaps are captured as tasks.
 - [ ] The user has explicitly approved the brief.
 

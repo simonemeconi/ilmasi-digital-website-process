@@ -8,14 +8,16 @@ Gearyco Agentic Web Design is the standard operating system for building WordPre
 
 ## Workflow
 
-1. Discovery
-2. Copywriting
-3. Wireframing
-4. UI Design
-5. Development
-6. SEO Optimization
-7. Performance Optimization
-8. Deployment
+1. Business/Brand Discovery
+2. Copywriting Discovery
+3. Home Page Wireframing & Copy
+4. Home Page UI Design
+5. Remaining Wireframes
+6. Remaining UI Screens
+7. Development
+8. SEO Optimization
+9. Performance Optimization
+10. Deployment
 
 ## Getting started: Discovery
 
@@ -25,13 +27,14 @@ Do not skip ahead to copywriting, wireframing, or design until the discovery bri
 
 ## Project Environment & Stack
 
-- WordPress
-- Etch (https://docs.etchwp.com)
-- Automatic.css (https://docs.automaticcss.com)
+- **Paper or Figma** - Wireframing & Design
+- **WordPress or Etch Studio** - Platform
+- **Etch (https://docs.etchwp.com)** - Development Tool
+- **Automatic.css (https://docs.automaticcss.com)** - Design system & CSS framework
 
 ## Discovery Conventions
 
-Load and follow [agent-docs/discovery.md](agent-docs/discovery.md) during workflow step 1 (Discovery) to run the guided interview and produce the project brief that drives every later step.
+Load and follow [agent-docs/discovery.md](agent-docs/discovery.md) during workflow step 1 (Business/Brand Discovery) to run the guided interview and produce the project brief that drives every later step.
 
 ## Copy Conventions
 

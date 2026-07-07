@@ -23,7 +23,7 @@ Or specify a target directory:
 npx gearyco-agentic-web-design ./my-wordpress-site
 ```
 
-This copies `AGENTS.md` and `agent-docs/` into the target and creates an empty `discovery/` folder. Your AI coding tool reads `AGENTS.md` and loads the referenced docs — no harness-specific skill folders required.
+This copies `AGENTS.md` and `agent-docs/` into the target and scaffolds `discovery/brief.md` (an empty discovery brief stub). Your AI coding tool reads `AGENTS.md` and loads the referenced docs — no harness-specific skill folders required.
 
 Use `--force` to overwrite existing files:
 
@@ -39,12 +39,14 @@ After installing, open the project in your AI coding tool and say:
 start discovery
 ```
 
-The agent runs a guided 7-phase discovery interview (stakeholder, business, audience, competitors, scope, brand, proof), grilling you for specifics and pushing back on vague answers. It writes everything to `discovery/brief.md`, which becomes the source of truth for copywriting, wireframing, and design. See [agent-docs/discovery.md](agent-docs/discovery.md) for the full playbook.
+The agent runs a guided 7-phase discovery interview (project goal, business, audience, competitors, pages, brand, proof) focused purely on marketing, copy, and design inputs, grilling you for specifics and pushing back on vague answers. It fills in `discovery/brief.md` as it goes — the file is created at install time so discovery progress is always checkable — and that brief becomes the source of truth for copywriting, wireframing, and design. See [agent-docs/discovery.md](agent-docs/discovery.md) for the full playbook.
 
 ## Structure
 
 ```
 ├── AGENTS.md       # Entry point — workflow, stack, doc index
+├── templates/      # Files scaffolded into projects
+│   └── discovery-brief.md   # Stub copied to discovery/brief.md on install
 └── agent-docs/     # Reference docs loaded by workflow step
     ├── discovery.md    # Guided discovery interview (step 1)
     ├── copywriting.md

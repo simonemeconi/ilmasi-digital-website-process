@@ -1,6 +1,6 @@
 {
   "name": "gearyco-agentic-web-design",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Agent documentation for Gearyco WordPress web projects — install AGENTS.md and reference docs into any project",
   "type": "module",
   "bin": {
@@ -9,7 +9,8 @@
   "files": [
     "bin",
     "AGENTS.md",
-    "agent-docs"
+    "agent-docs",
+    "templates"
   ],
   "engines": {
     "node": ">=18"
