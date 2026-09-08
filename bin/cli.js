@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+// ILMASI Digital Website Process
+//
+// Based on gearyco-agentic-web-design by Kevin Geary (MIT).
+// Modified to copy tools/ into the target project and to seed design-system/.
+
 import { cpSync, existsSync, mkdirSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,21 +15,58 @@ const packageRoot = join(__dirname, "..");
 const FILES = ["AGENTS.md"];
 const DIRS = ["agent-docs"];
 
+// Executable helpers. Copied into the project because npx does not leave the
+// package behind — without this the agent has no path to run them from.
+// Shipped code, so --force refreshes them.
+const TOOLS = [
+  { from: join("bin", "check-colors.js"), to: join("tools", "check-colors.js") },
+];
+
+// Seeds become the project's own files. Created once, never overwritten, not
+// even with --force: they hold the answers and settings for this specific
+// project. --force only refreshes the shipped docs and tools.
+//
+// They land in three folders that mirror the two project phases:
+// discovery/ is phase one, with the client. build/ is phase two, in-house.
+// design-system/ is the bridge — decided with the client, applied in-house.
+const SEEDS = [
+  {
+    from: join("templates", "discovery-brief.md"),
+    to: join("discovery", "brief.md"),
+    label: "discovery/brief.md",
+  },
+  {
+    from: join("templates", "environment.md"),
+    to: join("build", "environment.md"),
+    label: "build/environment.md",
+  },
+  {
+    from: join("templates", "acss-blueprint.json"),
+    to: join("design-system", "acss-settings.json"),
+    label: "design-system/acss-settings.json",
+  },
+  {
+    from: join("templates", "tokens.md"),
+    to: join("design-system", "tokens.md"),
+    label: "design-system/tokens.md",
+  },
+];
+
 function printHelp() {
   console.log(`
-gearyco-agentic-web-design — install Gearyco agent docs into a project
+ilmasi-digital-website-process — install the ILMASI agent docs into a project
 
 Usage:
-  npx gearyco-agentic-web-design [directory] [options]
+  npx ilmasi-digital-website-process [directory] [options]
 
 Options:
-  --force, -f    Overwrite existing AGENTS.md or agent-docs/
+  --force, -f    Overwrite existing AGENTS.md, agent-docs/ or tools/
   --help, -h     Show this help message
 
 Examples:
-  npx gearyco-agentic-web-design
-  npx gearyco-agentic-web-design ./my-wordpress-site
-  npx gearyco-agentic-web-design --force
+  npx ilmasi-digital-website-process
+  npx ilmasi-digital-website-process ./my-wordpress-site
+  npx ilmasi-digital-website-process --force
 `);
 }
 
@@ -63,6 +105,15 @@ function listConflicts(target) {
     }
   }
 
+  for (const tool of TOOLS) {
+    if (existsSync(join(target, tool.to))) {
+      conflicts.push(tool.to);
+    }
+  }
+
+  // Seeds are deliberately absent here: they are never overwritten, so their
+  // presence is not a conflict and must not block the install.
+
   return conflicts;
 }
 
@@ -70,26 +121,62 @@ function copyPackageFiles(target, force) {
   mkdirSync(target, { recursive: true });
 
   for (const file of FILES) {
-    const source = join(packageRoot, file);
     const dest = join(target, file);
 
     if (existsSync(dest) && !force) {
       continue;
     }
 
-    cpSync(source, dest);
+    cpSync(join(packageRoot, file), dest);
   }
 
   for (const dir of DIRS) {
-    const source = join(packageRoot, dir);
     const dest = join(target, dir);
 
     if (existsSync(dest) && !force) {
       continue;
     }
 
-    cpSync(source, dest, { recursive: true });
+    cpSync(join(packageRoot, dir), dest, { recursive: true });
   }
+
+  for (const tool of TOOLS) {
+    const dest = join(target, tool.to);
+
+    if (existsSync(dest) && !force) {
+      continue;
+    }
+
+    mkdirSync(dirname(dest), { recursive: true });
+    cpSync(join(packageRoot, tool.from), dest);
+  }
+}
+
+function copySeeds(target) {
+  const results = [];
+
+  for (const seed of SEEDS) {
+    const source = join(packageRoot, seed.from);
+
+    // A seed whose template has not been written yet is skipped rather than
+    // fatal, so the CLI stays usable while the package is still growing.
+    if (!existsSync(source)) {
+      results.push({ label: seed.label, state: "not shipped yet" });
+      continue;
+    }
+
+    const dest = join(target, seed.to);
+    const existed = existsSync(dest);
+
+    if (!existed) {
+      mkdirSync(dirname(dest), { recursive: true });
+      cpSync(source, dest);
+    }
+
+    results.push({ label: seed.label, state: existed ? "kept" : "created" });
+  }
+
+  return results;
 }
 
 function countAgentDocs() {
@@ -131,23 +218,18 @@ function main() {
   }
 
   copyPackageFiles(target, force);
-
-  const discoveryDir = join(target, "discovery");
-  mkdirSync(discoveryDir, { recursive: true });
-
-  // brief.md holds the user's discovery answers, so it is never overwritten,
-  // even with --force. --force only refreshes the shipped docs.
-  const briefDest = join(discoveryDir, "brief.md");
-  const briefExisted = existsSync(briefDest);
-  if (!briefExisted) {
-    cpSync(join(packageRoot, "templates", "discovery-brief.md"), briefDest);
-  }
+  const seeded = copySeeds(target);
 
   const docCount = countAgentDocs();
-  console.log(`Installed Gearyco Agentic Web Design to ${target}`);
+  console.log(`Installed ILMASI Digital Website Process to ${target}`);
   console.log(`  AGENTS.md`);
   console.log(`  agent-docs/ (${docCount} reference docs)`);
-  console.log(`  discovery/brief.md ${briefExisted ? "(kept)" : "(created)"}`);
+  for (const tool of TOOLS) {
+    console.log(`  ${tool.to}`);
+  }
+  for (const { label, state } of seeded) {
+    console.log(`  ${label} (${state})`);
+  }
   console.log("\nYour AI coding tool will pick up AGENTS.md automatically.");
   console.log("Next step: open your AI coding tool and say  start discovery");
 }

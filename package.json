@@ -1,16 +1,17 @@
 {
-  "name": "gearyco-agentic-web-design",
-  "version": "0.2.1",
-  "description": "Agent documentation for Gearyco WordPress web projects — install AGENTS.md and reference docs into any project",
+  "name": "ilmasi-digital-website-process",
+  "version": "0.1.0",
+  "description": "Agent documentation for ILMASI Digital WordPress projects — installs AGENTS.md, reference docs and design-system tooling into any project",
   "type": "module",
   "bin": {
-    "gearyco-agentic-web-design": "./bin/cli.js"
+    "ilmasi-digital-website-process": "./bin/cli.js"
   },
   "files": [
     "bin",
     "AGENTS.md",
     "agent-docs",
-    "templates"
+    "templates",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=18"
@@ -21,11 +22,13 @@
     "wordpress",
     "automatic-css",
     "etch",
-    "gearyco"
+    "design-system",
+    "ilmasi"
   ],
+  "author": "Simone Meconi (ILMASI Digital Agency)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kevingeary/gearyco-agentic-web-design.git"
+    "url": "git+https://github.com/simonemeconi/ilmasi-digital-website-process.git"
   }
 }
