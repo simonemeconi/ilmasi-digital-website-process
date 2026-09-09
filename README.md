@@ -108,7 +108,8 @@ approvals that go with them. Output lands in `discovery/`.
 hardening, SEO, backups and go-live. Output lands in `build/`.
 
 `design-system/` sits between them: decided with the client, applied in-house.
-The client returns once more at go-live, for handover and training.
+The site is not handed over at launch — it stays under agency management, so
+phase two has no client-facing step.
 
 ## The design system contract
 

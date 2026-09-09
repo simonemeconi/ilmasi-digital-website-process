@@ -23,9 +23,12 @@
     "automatic-css",
     "etch",
     "design-system",
-    "ilmasi"
+    "seo",
+    "development",
+    "optimization",
+    "hardening"
   ],
-  "author": "Simone Meconi (ILMASI Digital Agency)",
+  "author": "ILMASI Digital Agency",
   "license": "MIT",
   "repository": {
     "type": "git",

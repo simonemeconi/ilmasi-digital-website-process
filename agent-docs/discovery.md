@@ -300,3 +300,43 @@ Discovery is not complete until:
 
 - [copywriting.md](copywriting.md) — the next step; consumes this brief (purpose, audience, objection, proof, voice).
 - [design.md](design.md) — register (brand vs product) and voice feed wireframing and UI design.
+
+<!-- ILMASI addition — controller identity phase -->
+
+## Phase 8 — Controller identity
+
+*Added to the original interview. Everything collected here is written to
+[discovery/controller.md](../discovery/controller.md), which
+[privacy-compliance.md](privacy-compliance.md) reads at step 11.*
+
+Ask this while you have the client's attention. Every field is something they
+have to hand today, and every field appears verbatim in a published document
+later. Asking months afterwards, with the site built and waiting, turns a
+five-minute exchange into a week of chasing.
+
+Collect:
+
+- Legal name, legal form, registered office, VAT number, tax code.
+- Legal representative: name and role.
+- **A contact address for data subjects, and confirmation that somebody reads
+  it.** This is the channel through which people will exercise their rights. An
+  unmonitored address makes the rights section of the policy inoperative.
+- PEC.
+- Whether a data protection officer has been appointed, and their contact
+  details if so.
+- Whether a privacy policy, a cookie policy or a register of processing already
+  exists, where they live, and who maintains them.
+
+Two things not to do here:
+
+**Do not ask about purposes, legal bases or retention.** Those depend on what
+the site ends up doing, which is not yet decided at discovery. They belong to
+step 11.
+
+**Do not fill a blank with something plausible.** Write "not provided yet" and
+leave it visible. These fields become statements published in the client's own
+name, and an invented retention period is a false declaration rather than a
+placeholder.
+
+If existing policies turn up, get copies now. They are the starting point at
+step 11, and they take precedence over anything drafted from scratch.

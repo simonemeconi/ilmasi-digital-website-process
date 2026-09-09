@@ -146,6 +146,49 @@ function analyze(hex, target) {
   };
 }
 
+/** Trim trailing zeros so the emitted JSON reads like hand-written settings. */
+const num = (n, places) => String(Number(n.toFixed(places)));
+
+/**
+ * Emits the settings fields for `acss-settings.json`.
+ *
+ * Chroma is emitted as the source value, uncapped. ACSS clamps it against its
+ * own gamut when the settings are saved, and its gamut is wider than the sRGB
+ * one used for the preview above — capping here would throw away chroma ACSS
+ * would have kept.
+ *
+ * `color-*` is legacy and ACSS neither reads nor updates it, but a file whose
+ * hex disagrees with its OKLCH is unreadable in a diff a year later. It is
+ * written to the resolved colour to keep the file honest with itself.
+ */
+function emitFields(entries, target) {
+  console.log(bold('Fields for acss-settings.json'));
+  console.log(
+    dim('  Write these, import, then open ACSS and save. The save is what\n' +
+        '  recalculates the shades — importing alone leaves them at zero.\n')
+  );
+
+  for (const { label, analysis: a } of entries) {
+    const role = label || 'ROLE';
+    console.log(`  "${role}-l-oklch": ${num(a.result.L, 3)},`);
+    console.log(`  "${role}-c-oklch": ${num(a.source.C, 4)},`);
+    console.log(`  "${role}-h-oklch": ${num(a.source.H, 2)},`);
+    console.log(`  "color-${role}": "${oklchToHex(a.result)}",`);
+    console.log();
+  }
+
+  if (entries.some((e) => !e.label)) {
+    console.log(
+      dim('  Pass colours as role=hex (primary=#32a2c1) to get real field names.\n')
+    );
+  }
+
+  console.log(
+    dim('  Leave every "-hover-", "-light-", "-dark-" and "-ultra-" field alone.\n' +
+        '  ACSS derives those, and it does it better than we can.\n')
+  );
+}
+
 function report(entries, target) {
   const lightnesses = entries.map((e) => e.analysis.source.L);
   const spread = Math.max(...lightnesses) - Math.min(...lightnesses);
@@ -205,9 +248,12 @@ function report(entries, target) {
       `  Before locking it in, preview ${names} with the client.\n` +
         '  Turn the option OFF only if these exact values are contractual — a registered\n' +
         '  mark or a brand manual. The palette will be less even, and contrast will need\n' +
-        '  checking per color, but the hexes stay true.\n'
+        '  checking per color, but the hexes stay true. With it off, write each colour\'s\n' +
+        '  own lightness below instead of the shared target.\n'
     );
   }
+
+  emitFields(entries, target);
 }
 
 // ---------------------------------------------------------------------- main

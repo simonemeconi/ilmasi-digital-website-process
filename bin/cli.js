@@ -36,6 +36,11 @@ const SEEDS = [
     label: "discovery/brief.md",
   },
   {
+    from: join("templates", "controller.md"),
+    to: join("discovery", "controller.md"),
+    label: "discovery/controller.md",
+  },
+  {
     from: join("templates", "environment.md"),
     to: join("build", "environment.md"),
     label: "build/environment.md",
