@@ -1,6 +1,6 @@
 {
   "name": "ilmasi-digital-website-process",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Agent documentation for ILMASI Digital WordPress projects — installs AGENTS.md, reference docs and design-system tooling into any project",
   "type": "module",
   "bin": {
